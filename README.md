@@ -44,7 +44,7 @@ There are different end points in this application. Please find there descriptio
                             }<br/>
 
     d. for searching hotel based on different criterias. all fields are optional. provide values for those field by which you want to filter the result. Please use below for using service.<br/>
-        endpoint - /BookMyHotel/searchHotel<br/>
+        endpoint - /BookMyHotel/saerchHhotel<br/>
         request - get request<br/>
         request body -  {<br/>
                                 "city" : "city2",<br/>

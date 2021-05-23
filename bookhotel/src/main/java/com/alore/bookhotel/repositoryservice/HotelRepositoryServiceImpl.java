@@ -60,6 +60,7 @@ public class HotelRepositoryServiceImpl implements HotelRepositoryService {
             HotelEntity hotelEntity = optionalHotelEntity.get();
 
             hotelEntity.setCity(hotel.getCity());
+            hotelEntity.setName(hotel.getName());
             hotelEntity.setCostOfRoom(hotel.getCostOfRoom());
             hotelEntity.setFacility(hotel.getFacility());
             hotelEntity.setTotalRoom(hotel.getTotalRoom());

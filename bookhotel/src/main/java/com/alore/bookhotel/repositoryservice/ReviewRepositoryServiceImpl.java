@@ -66,12 +66,17 @@ public class ReviewRepositoryServiceImpl implements ReviewRepositoryService {
             HotelEntity hotelEntity = (hotelRepo.findById(hotelId)).get();
 
             int reviewCount = reviewRepo.countReviewPerHotel(hotelEntity.getId());
-            int rating = hotelEntity.getOverallRating().ordinal() + 1;
+            if (reviewCount == 1) {
+                hotelEntity.setOverallRating(null);
+            } else {
+                int rating = hotelEntity.getOverallRating().ordinal() + 1;
 
-            rating = rating * reviewCount - reviewRepo.findById(reviewId).get().getRating().ordinal() + 1;
-            rating /= (reviewCount - 1);
+                rating = rating * reviewCount - reviewRepo.findById(reviewId).get().getRating().ordinal() - 1;
+                rating /= (reviewCount - 1);
 
-            hotelEntity.setOverallRating(Rating.values()[rating - 1]);
+                hotelEntity.setOverallRating(Rating.values()[rating - 1]);
+
+            }
             hotelRepo.save(hotelEntity);
 
             reviewRepo.deleteById(reviewId);
@@ -84,14 +89,19 @@ public class ReviewRepositoryServiceImpl implements ReviewRepositoryService {
 
         ReviewEntity reviewEntity = reviewRepo.getById(reviewId);
 
-        reviewEntity.setComment(comment);
+        if (reviewEntity == null)
+            return null;
+        if (comment != null && !comment.equals("")) {
+            reviewEntity.setComment(comment);
+        }
+
         if (ratings != null) {
             HotelEntity hotelEntity = (hotelRepo.findById(reviewEntity.getHotelId())).get();
 
             int reviewCount = reviewRepo.countReviewPerHotel(hotelEntity.getId());
             int rating = hotelEntity.getOverallRating().ordinal() + 1;
 
-            rating = rating * reviewCount + ratings.ordinal() + 1 - reviewEntity.getRating().ordinal() + 1;
+            rating = rating * reviewCount + ratings.ordinal() + 1 - reviewEntity.getRating().ordinal() - 1;
             rating /= (reviewCount);
 
             hotelEntity.setOverallRating(Rating.values()[rating - 1]);

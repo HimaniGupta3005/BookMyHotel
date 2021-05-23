@@ -52,7 +52,7 @@ public class HotelController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping(value = "/hotelSearch")
+    @GetMapping(value = "/searchHotel")
     public ResponseEntity<SearchHotelResponse> getHotelBySearchFields(
             @RequestBody SearchHotelRequest searchHotelRequest) {
 
