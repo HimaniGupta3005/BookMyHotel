@@ -11,16 +11,16 @@ There are different end points in this application. Please find there descriptio
 <br/>
 1. endpoint related to Hotel services provided.<br/>
     a. for adding new hotel, please use below endpoint and refer sample request body<br/>
-        ## end point - /BookMyHotel/hotel<br/>
-        ## request - Get request<br/>
-        ## request body - {<br/>
-                            "hotel" : {<br/>
-                            "name" : "Hotel1",<br/>
-                            "city" : "city1",<br/>
-                            "totalRoom" : 100,<br/>
-                            "costOfRoom" : 100,<br/>
-                            "facility" : ["AC","FOOD"] <br/>
-                        }<br/>
+        > end point - /BookMyHotel/hotel<br/>
+        > request - Get request<br/>
+        > request body - {<br/>
+        >                    "hotel" : {<br/>
+        >                    "name" : "Hotel1",<br/>
+        >                    "city" : "city1",<br/>
+        >                    "totalRoom" : 100,<br/>
+        >                    "costOfRoom" : 100,<br/>
+        >                    "facility" : ["AC","FOOD"] <br/>
+        >                }<br/>
 
     b. for updating an already existing hotel details, please use below endpoint, request and sample request body<br/>
         ## end point - /BookMyHotel/hotel<br/>
