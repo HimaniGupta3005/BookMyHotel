@@ -2,73 +2,118 @@
   <content><![CDATA[
 
 # ${1:Book My Hotel}
-TODO: We are providing different features to assist users to search for hotel and provide reviews.
+We are providing different features to assist users to search for hotel and provide reviews.
+<br/>
 
 ## How to use
 
 There are different end points in this application. Please find there description below.
+<br/>
+1. endpoint related to Hotel services provided.<br/>
+    a. for adding new hotel, please use below endpoint and refer sample request body<br/>
+        ## end point - /BookMyHotel/hotel<br/>
+        ## request - Get request<br/>
+        ## request body - {<br/>
+                            "hotel" : {<br/>
+                            "name" : "Hotel1",<br/>
+                            "city" : "city1",<br/>
+                            "totalRoom" : 100,<br/>
+                            "costOfRoom" : 100,<br/>
+                            "facility" : ["AC","FOOD"] <br/>
+                        }<br/>
 
-1. endpoint related to Hotel services provided.
-    a. for adding new hotel, please use below endpoint and refer sample request body
-        ## end point - /BookMyHotel/hotel
-        ## request - Get request
-        ## request body - {
-                            "hotel" : {
-                            "name" : "Hotel1",
-                            "city" : "city1",
-                            "totalRoom" : 100,
-                            "costOfRoom" : 100,
-                            "facility" : ["AC","FOOD"]
-                        }
+    b. for updating an already existing hotel details, please use below endpoint, request and sample request body<br/>
+        ## end point - /BookMyHotel/hotel<br/>
+        ## request - put request<br/>
+        ## request body - {<br/>
+                            "hotelId" : 1,<br/>
+                            "hotel" : { <br/>
+                            "name" : "Hotel1",<br/>
+                            "city" : "city1",<br/>
+                            "totalRoom" : 100,<br/>
+                            "costOfRoom" : 100,<br/>
+                            "facility" : ["AC","FOOD"]<br/>
+                            }<br/>
+                        }<br/>
 
-    b. for updating an already existing hotel details, please use below endpoint, request and sample request body
-        ## end point - /BookMyHotel/hotel
-        ## request - put request
-        ## request body - {
-                            "hotelId" : 1
-                            "hotel" : {
-                            "name" : "Hotel1",
-                            "city" : "city1",
-                            "totalRoom" : 100,
-                            "costOfRoom" : 100,
-                            "facility" : ["AC","FOOD"]
-                            }
-                        }
+    c. for deleting an hotel, use below format for making request<br/>
+        ## endpoint - /BookMyHotel/hotel<br/>
+        ## request - delete request<br/>
+        ## request body -   {<br/>
+                                "hotelId" : 1<br/>
+                            }<br/>
 
-    c. for deleting an hotel, use below format for making request
-        ## endpoint - /BookMyHotel/hotel
-        ## request - delete request
-        ## request body -   {
-                                "hotelId" : 1
-                            }
+    d. for searching hotel based on different criterias. all fields are optional. provide values for those field by which you want to filter the result. Please use below for using service.<br/>
+        ## endpoint - /BookMyHotel/searchHotel<br/>
+        ## request - get request<br/>
+        ## request body -  {<br/>
+                                "city" : "city2",<br/>
+                                "date" : "2021-05-22",<br/>
+                                "roomRequired" : 12,<br/>
+                                "rating" : "FIVESTAR",<br/>
+                                "facilities" : ["AC"]<br/>
+                            }<br/>
+<br/>
+2. endpoint related to User services provided.<br/>
+    a. for adding new user, please use below endpoint and refer sample request body<br/>
+        ## end point - /BookMyHotel/user<br/>
+        ## request - Get request<br/>
+        ## request body - {<br/>
+                            "user" : {<br/>
+                            "name" : "user1",<br/>
+                            "gender" : "FEMALE"<br/>
+                        }<br/>
 
-    d. for searching hotel based on different criterias. all fields are optional. provide values for those field by which you want to filter the result. Please use below for using service.
-        ## endpoint - /BookMyHotel/searchHotel
-        ## request - get request
-        ## request body -  {
-                                "city" : "city2",
-                                "date" : "2021-05-22",
-                                "roomRequired" : 12,
-                                "rating" : "FIVESTAR",
-                                "facilities" : ["AC"]
-                            }
+    b. for updating an already existing user details, please use below endpoint, request and sample request body<br/>
+        ## end point - /BookMyHotel/user<br/>
+        ## request - put request<br/>
+        ## request body - {<br/>
+                            "userId" : 1<br/>
+                            "user" : {<br/>
+                            "name" : "user1",<br/>
+                            "gender" : "FEMALE"<br/>
+                            }<br/>
+                        }<br/>
+<br/>
+    c. for deleting an user, use below format for making request<br/>
+        ## endpoint - /BookMyHotel/user<br/>
+        ## request - delete request<br/>
+        ## request body -   {<br/>
+                                "userId" : 1<br/>
+                            }<br/>
+<br/>
+2. endpoint related to review services provided.<br/>
+    a. for adding new user, please use below endpoint and refer sample request body<br/>
+        ## end point - /BookMyHotel/review<br/>
+        ## request - Get request<br/>
+        ## request body - {<br/>
+                            "review" : {<br/>
+                              "userId" : 0,<br/>
+                              "hotelId" : 1,<br/>
+                              "comment" : "comment1",<br/>
+                              "rating" : "FIVESTAR"<br/>
+                        }<br/>
 
+    b. for updating an already existing review details, please use below endpoint, request and sample request body<br/>
+        ## end point - /BookMyHotel/review<br/>
+        ## request - put request<br/>
+        ## request body - {<br/>
+                            "reviewId" : 1,<br/>
+                            "review" : {<br/>
+                            "name" : "user1",<br/>
+                            "gender" : "FEMALE"<br/>
+                            }<br/>
+                        }<br/>
 
+    c. for deleting an review, use below format for making request<br/>
+        ## endpoint - /BookMyHotel/review<br/>
+        ## request - delete request<br/>
+        ## request body -   {<br/>
+                                "reviewId" : 1,<br/>
+                                "comment" : "comment1",<br/>
+                                "rating" : "ONESTAR"<br/>
+                            }<br/>
 
-## Usage
-TODO: Write usage instructions
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
-## License
-TODO: Write license
 ]]></content>
   <tabTrigger>readme</tabTrigger>
 </snippet>
