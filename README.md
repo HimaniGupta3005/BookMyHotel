@@ -5,7 +5,7 @@
 We are providing different features to assist users to search for hotel and provide reviews.
 <br/>
 
-## How to use
+## How to use 
 
 There are different end points in this application. Please find there description below.
 <br/>
