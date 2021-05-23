@@ -1,27 +1,38 @@
 package com.alore.bookhotel.dto.reviewdto;
 
+import com.alore.bookhotel.dao.Rating;
 import com.alore.bookhotel.dao.Review;
 
 public class UpdateReviewRequest {
 
-    private Review review;
     private int reviewId;
+    private String comment;
+    private Rating rating;
 
     public UpdateReviewRequest() {
 
     }
 
-    public UpdateReviewRequest(Review review, int reviewId) {
-        this.review = review;
+    public UpdateReviewRequest(int reviewId, String comment, Rating rating) {
         this.reviewId = reviewId;
+        this.comment = comment;
+        this.rating = rating;
     }
 
-    public Review getReview() {
-        return review;
+    public String getComment() {
+        return comment;
     }
 
-    public void setReview(Review review) {
-        this.review = review;
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
 
     public int getReviewId() {

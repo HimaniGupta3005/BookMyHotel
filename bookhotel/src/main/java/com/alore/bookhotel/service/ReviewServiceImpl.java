@@ -60,8 +60,8 @@ public class ReviewServiceImpl implements ReviewService {
         if (updateReviewRequest == null)
             return null;
 
-        ReviewEntity reviewEntity = reviewRepositoryService.updateReview(updateReviewRequest.getReview(),
-                updateReviewRequest.getReviewId());
+        ReviewEntity reviewEntity = reviewRepositoryService.updateReview(updateReviewRequest.getComment(),
+                updateReviewRequest.getRating(), updateReviewRequest.getReviewId());
 
         ReviewResponse result = new ReviewResponse(reviewEntity.getId(), reviewEntity.getUserId(),
                 reviewEntity.getHotelId(), reviewEntity.getComment(), reviewEntity.getRating());

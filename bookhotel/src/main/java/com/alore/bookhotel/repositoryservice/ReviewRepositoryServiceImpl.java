@@ -80,23 +80,23 @@ public class ReviewRepositoryServiceImpl implements ReviewRepositoryService {
     }
 
     @Override
-    public ReviewEntity updateReview(Review review, int reviewId) {
+    public ReviewEntity updateReview(String comment, Rating ratings, int reviewId) {
 
         ReviewEntity reviewEntity = reviewRepo.getById(reviewId);
 
-        reviewEntity.setComment(review.getComment());
-        if (review.getRating() != null) {
-            HotelEntity hotelEntity = (hotelRepo.findById(review.getHotelId())).get();
+        reviewEntity.setComment(comment);
+        if (ratings != null) {
+            HotelEntity hotelEntity = (hotelRepo.findById(reviewEntity.getHotelId())).get();
 
             int reviewCount = reviewRepo.countReviewPerHotel(hotelEntity.getId());
             int rating = hotelEntity.getOverallRating().ordinal() + 1;
 
-            rating = rating * reviewCount + review.getRating().ordinal() + 1 - reviewEntity.getRating().ordinal() + 1;
+            rating = rating * reviewCount + ratings.ordinal() + 1 - reviewEntity.getRating().ordinal() + 1;
             rating /= (reviewCount);
 
             hotelEntity.setOverallRating(Rating.values()[rating - 1]);
             hotelRepo.save(hotelEntity);
-            reviewEntity.setRating(review.getRating());
+            reviewEntity.setRating(ratings);
         }
 
         reviewRepo.save(reviewEntity);
