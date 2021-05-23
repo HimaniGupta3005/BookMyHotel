@@ -114,6 +114,11 @@ There are different end points in this application. Please find there descriptio
                                 "rating" : "ONESTAR"<br/>
                             }<br/>
 
+# Building and starting Application
+
+build command - mvn clean install 
+command for starting application - mvn spring-boot:run
+
 ]]></content>
   <tabTrigger>readme</tabTrigger>
 </snippet>
